@@ -1,0 +1,11 @@
+<nav class="navbar fixed-top navbar-light bg-light">
+  <div class="container-fluid">
+    <button type="button" *ngIf="!showUtenti" id="mostraUtentiButton" (click)="showUtenti=true" mat-raised-button>Mostra utenti</button>
+    <button type="button" *ngIf="showUtenti" id="mostraFormButton" (click)="showUtenti=false" mat-raised-button>Mostra form</button>
+  </div>
+</nav>
+
+
+<app-form *ngIf="!showUtenti" ></app-form>
+<app-lista-utenti *ngIf="showUtenti"></app-lista-utenti>
+

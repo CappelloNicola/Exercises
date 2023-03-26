@@ -1,0 +1,6 @@
+<app-form *ngIf="!formSubmitted" (formValues)="getFormValues($event)" (submitted)="submittedEvent($event)"></app-form>
+
+
+<app-card-utente *ngIf="formSubmitted" [utente]="registeredUtente"></app-card-utente>
+
+

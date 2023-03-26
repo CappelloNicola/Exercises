@@ -1,0 +1,43 @@
+<form [formGroup]="myForm" (ngSubmit) = "onSubmit()">
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput placeholder="pat@example.com" formControlName="email" required>
+
+    <mat-error *ngIf="myForm.controls['email'].invalid">Inserisci un'email valida</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Password</mat-label>
+    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+    <mat-error *ngIf="myForm.controls['password'].invalid">Inserisci una password valida</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Nome</mat-label>
+    <input matInput formControlName="nome" required>
+
+    <mat-error *ngIf="myForm.controls['nome'].invalid">Inserisci un nome valido</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Cognome</mat-label>
+    <input matInput formControlName="cognome" required>
+
+    <mat-error *ngIf="myForm.controls['cognome'].invalid">Inserisci un cognome valido</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Sesso</mat-label>
+    <mat-select formControlName="sesso" required>
+      <mat-option value="m">Uomo</mat-option>
+      <mat-option value="f">Donna</mat-option>
+      <mat-option value="n">Preferisco non dirlo</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button type="submit" mat-raised-button>Registrati</button>
+
+</form>

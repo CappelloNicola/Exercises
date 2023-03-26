@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row g-3">
+    <div *ngIf="utenti.length==0" class="col-12 text-center">
+      <h1>Nessun utente inserito</h1>
+    </div>
+    <div *ngFor="let utente of utenti" class="col-md-6">
+      <app-card-utente [utente]="utente"></app-card-utente>
+    </div>
+  </div>
+</div>
+
+
+
+

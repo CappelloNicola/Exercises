@@ -1,0 +1,49 @@
+<mat-card class="shadow-sm">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title *ngIf="!isEditable">
+      <span>{{utente.nome}}</span>&nbsp;<span>{{utente.cognome}}</span>
+    </mat-card-title>
+    <mat-card-title *ngIf="isEditable">
+      <span id="nomeUtente" (input)="propertyModified($event)" contenteditable="true">{{utente.nome}}</span>&nbsp;<span id="cognomeUtente" (input)="propertyModified($event)" contenteditable="true">{{utente.cognome}}</span>
+    </mat-card-title>
+      <mat-card-subtitle>
+        <span *ngIf="!isEditable">{{utente.email}}</span>
+        <span id="emailUtente" *ngIf="isEditable" (input)="propertyModified($event)" contenteditable="true">{{utente.email}}</span>
+      </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+
+    <p><b>Password: </b>
+
+      <span *ngIf="!isEditable" [ngClass]="{'passTextHidden': !isPassVisible}">{{utente.password}}</span>
+      <span *ngIf="isEditable" id="passwordUtente" (input)="propertyModified($event)"  contenteditable="true" [ngClass]="{'passTextHidden': !isPassVisible}">{{utente.password}}</span>
+
+      <button mat-icon-button matSuffix (click)="isPassVisible = !isPassVisible">
+      <mat-icon>{{isPassVisible ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+    </p>
+
+    <p><b>Sesso: </b>
+      <span *ngIf="!isEditable" [attr.contenteditable]="isEditable">{{utente.sesso | getSexFromValue}}</span>
+      <mat-form-field *ngIf="isEditable" appearance="fill">
+        <mat-label>Sesso</mat-label>
+        <mat-select (selectionChange)="propertyModified($event)" [value] = "utente.sesso">
+          <mat-option value="m">Uomo</mat-option>
+          <mat-option value="f">Donna</mat-option>
+          <mat-option value="n">Non specificato</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </p>
+  </mat-card-content>
+
+  <br>
+  <mat-divider></mat-divider>
+
+  <mat-card-actions>
+    <img class="button" (click)="deleteUser()" src="../../../assets/imgs/delete.svg">
+    <img *ngIf="!isEditable" class="button" (click)="setEditable(true)" src="../../../assets/imgs/edit.svg">
+    <img *ngIf="isEditable" class="button" (click)="setEditable(false)" src="../../../assets/imgs/cancel.svg">
+    <button *ngIf="isEditable" (click)="updateUser()" [disabled]="!isModified" type="button" mat-raised-button>Salva</button>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,16 @@
+.example-card {
+  min-width: 100%;
+}
+
+.example-header-image {
+  background-image: url('../../../assets/imgs/avatar.png');
+  background-size: cover;
+}
+
+#cardContainer{
+  margin-top:100px;
+  width:30%;
+  padding:10px;
+  margin-right: auto;
+  margin-left:auto;
+}
